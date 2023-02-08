@@ -15,7 +15,6 @@ import java.text.ParseException;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StudentTest {
 
@@ -205,7 +204,6 @@ public class StudentTest {
     @Test
     @DisplayName("subject name is null")
     public void subjectNameIsNull() throws ParseException {
-        EndCourseDate date = new EndCourseDate("2","12");
         Subject subject = new Subject(null, 9);
         Set<ConstraintViolation<Subject>> constraintViolations =
                 validator.validate( subject );
@@ -220,7 +218,6 @@ public class StudentTest {
     @Test
     @DisplayName("subject qualification is null")
     public void subjectQualificationIsNull() throws ParseException {
-        EndCourseDate date = new EndCourseDate("2","12");
         Subject subject = new Subject("lengua", null);
         Set<ConstraintViolation<Subject>> constraintViolations =
                 validator.validate( subject );
@@ -235,7 +232,6 @@ public class StudentTest {
     @Test
     @DisplayName("subject qualification is too small")
     public void subjectQualificationIsTooSmall() throws ParseException {
-        EndCourseDate date = new EndCourseDate("2","12");
         Subject subject = new Subject("lengua", -1);
         Set<ConstraintViolation<Subject>> constraintViolations =
                 validator.validate( subject );
@@ -250,7 +246,6 @@ public class StudentTest {
     @Test
     @DisplayName("subject qualification is too small")
     public void subjectQualificationIsTooBig() throws ParseException {
-        EndCourseDate date = new EndCourseDate("2","12");
         Subject subject = new Subject("lengua", 11);
         Set<ConstraintViolation<Subject>> constraintViolations =
                 validator.validate( subject );

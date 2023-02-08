@@ -35,14 +35,14 @@ public final class Student {
     }
 
     public Set<Subject> getStudiedSubjects(){
-        return Set.copyOf(this.studiedSubjects);
+        return this.studiedSubjects;
     }
 
     public Student(String name, Integer age, EndCourseDate date, Set<Subject> subjects){
         this.name = name;
         this.age = age;
         this.endCourseDate = date;
-        this.studiedSubjects = subjects;
+        this.studiedSubjects = subjects != null ? Set.copyOf(subjects) : null;
     }
 
     @Override
