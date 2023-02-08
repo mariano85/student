@@ -3,6 +3,7 @@ package model;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 import java.util.Set;
 
 public final class Student {
@@ -29,6 +30,14 @@ public final class Student {
         return this.age;
     }
 
+    public EndCourseDate getEndCourseDate() {
+        return endCourseDate;
+    }
+
+    public Set<Subject> getStudiedSubjects(){
+        return Set.copyOf(this.studiedSubjects);
+    }
+
     public Student(String name, Integer age, EndCourseDate date, Set<Subject> subjects){
         this.name = name;
         this.age = age;
@@ -36,4 +45,16 @@ public final class Student {
         this.studiedSubjects = subjects;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return Objects.equals(name, student.name) && Objects.equals(age, student.age) && Objects.equals(endCourseDate, student.endCourseDate) && Objects.equals(studiedSubjects, student.studiedSubjects);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, endCourseDate, studiedSubjects);
+    }
 }

@@ -149,7 +149,6 @@ public class StudentTest {
     @DisplayName("day is too small")
     public void dayIsTooSmall() throws ParseException {
         EndCourseDate date = new EndCourseDate("-1","1");
-        Student s = new Student("pepe",18,date, java.util.Set.of(new Subject("lengua", 9)));
         Set<ConstraintViolation<EndCourseDate>> constraintViolations =
                 validator.validate( date );
 
@@ -165,7 +164,6 @@ public class StudentTest {
     @DisplayName("day is too small")
     public void dayIsTooBig() throws ParseException {
         EndCourseDate date = new EndCourseDate("32","1");
-        Student s = new Student("pepe",18,date, java.util.Set.of(new Subject("lengua", 9)));
         Set<ConstraintViolation<EndCourseDate>> constraintViolations =
                 validator.validate( date );
 
@@ -180,7 +178,6 @@ public class StudentTest {
     @DisplayName("month is too small")
     public void monthIsTooSmall() throws ParseException {
         EndCourseDate date = new EndCourseDate("2","-1");
-        Student s = new Student("pepe",18,date, java.util.Set.of(new Subject("lengua", 9)));
         Set<ConstraintViolation<EndCourseDate>> constraintViolations =
                 validator.validate( date );
 
@@ -195,7 +192,6 @@ public class StudentTest {
     @DisplayName("month is too big")
     public void monthIsTooBig() throws ParseException {
         EndCourseDate date = new EndCourseDate("2","13");
-        Student s = new Student("pepe",18,date, java.util.Set.of(new Subject("lengua", 9)));
         Set<ConstraintViolation<EndCourseDate>> constraintViolations =
                 validator.validate( date );
 
@@ -211,7 +207,6 @@ public class StudentTest {
     public void subjectNameIsNull() throws ParseException {
         EndCourseDate date = new EndCourseDate("2","12");
         Subject subject = new Subject(null, 9);
-        Student s = new Student("pepe",18,date, java.util.Set.of(subject));
         Set<ConstraintViolation<Subject>> constraintViolations =
                 validator.validate( subject );
 
@@ -227,7 +222,6 @@ public class StudentTest {
     public void subjectQualificationIsNull() throws ParseException {
         EndCourseDate date = new EndCourseDate("2","12");
         Subject subject = new Subject("lengua", null);
-        Student s = new Student("pepe",18,date, java.util.Set.of(subject));
         Set<ConstraintViolation<Subject>> constraintViolations =
                 validator.validate( subject );
 
@@ -243,7 +237,6 @@ public class StudentTest {
     public void subjectQualificationIsTooSmall() throws ParseException {
         EndCourseDate date = new EndCourseDate("2","12");
         Subject subject = new Subject("lengua", -1);
-        Student s = new Student("pepe",18,date, java.util.Set.of(subject));
         Set<ConstraintViolation<Subject>> constraintViolations =
                 validator.validate( subject );
 
@@ -259,7 +252,6 @@ public class StudentTest {
     public void subjectQualificationIsTooBig() throws ParseException {
         EndCourseDate date = new EndCourseDate("2","12");
         Subject subject = new Subject("lengua", 11);
-        Student s = new Student("pepe",18,date, java.util.Set.of(subject));
         Set<ConstraintViolation<Subject>> constraintViolations =
                 validator.validate( subject );
 
@@ -269,8 +261,4 @@ public class StudentTest {
                 constraintViolations.iterator().next().getMessage()
         );
     }
-
-
-
-
 }
